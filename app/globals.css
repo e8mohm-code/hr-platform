@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    direction: rtl;
+    background: theme('colors.bg');
+    color: theme('colors.gray.900');
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  ::selection {
+    background: theme('colors.primary.50');
+    color: theme('colors.primary.700');
+  }
+
+  /* Headings — clear hierarchy per spec */
+  h1 { font-size: 28px; font-weight: 700; line-height: 1.3; }
+  h2 { font-size: 22px; font-weight: 600; line-height: 1.35; }
+  h3 { font-size: 18px; font-weight: 500; line-height: 1.4; }
+
+  /* Tabular numbers for stats */
+  .num {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+}
+
+@layer components {
+  /* Glass card — used only for KPIs, side panels, floating elements */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+  }
+
+  /* Critical row treatment for tables */
+  .row-critical {
+    box-shadow: inset 3px 0 0 theme('colors.danger');
+  }
+  .row-warning {
+    box-shadow: inset 3px 0 0 theme('colors.warning');
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: theme('colors.gray.300'); border-radius: 3px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover { background: theme('colors.gray.500'); }
+}
